@@ -27,8 +27,7 @@ df.item_name.mode()
 df['quantity'].sum()
 
 #Exo 10
-df['item_price'] = df['item_price'].fillna(0.0)
-df['item_price'] = df['item_price'].replace('$,', '')
+df['item_price'] = df['item_price'].fillna(0.0).replace('\$|,', '', regex=True)
 df['item_price'] = pd.to_numeric(df['item_price'])
 resultCA = (df['quantity'] * df['item_price']).sum()
 resultCA
